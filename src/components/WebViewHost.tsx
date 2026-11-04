@@ -168,20 +168,21 @@ export function WebViewHost({
           {STAGE_TEXT[stage]}
         </div>
       )}
-      {showStatus && (
+      {/* Полоска состояния нужна только пока страница не открылась: когда всё
+          готово, она лишь мешает и уезжает под навигацию «телефона». */}
+      {showStatus && stage !== 'ready' && (
         <div className="shrink-0 px-2 py-1 flex items-center gap-2 border-t border-white/10 bg-black/60 text-[9px] leading-tight">
           <span
             className="w-1.5 h-1.5 rounded-full shrink-0"
             style={{
-              background:
-                stage === 'ready' ? '#34d399' : stage === 'error' ? '#f87171' : '#fbbf24',
+              background: stage === 'error' ? '#f87171' : '#fbbf24',
             }}
           />
           <span className={`truncate ${stage === 'error' ? 'text-red-300' : 'text-white/60'}`}>
             WebView · {STAGE_TEXT[stage]}
             {note ? ` · ${note}` : ''}
           </span>
-          {(stage === 'error' || stage === 'ready') && (
+          {stage === 'error' && (
             <button
               type="button"
               className="ml-auto shrink-0 px-1.5 py-0.5 rounded bg-white/10 text-white/70"
@@ -191,7 +192,7 @@ export function WebViewHost({
                 setAttempt((a) => a + 1)
               }}
             >
-              {stage === 'error' ? 'ещё раз' : 'перезагрузить'}
+              ещё раз
             </button>
           )}
         </div>
