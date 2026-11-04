@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  min-height: 100%;
+  background: #07080c;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: #e8edf7;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(61, 214, 198, 0.08), transparent 50%),
+    radial-gradient(900px 500px at 100% 0%, rgba(80, 90, 255, 0.07), transparent 45%),
+    #07080c;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3142 transparent;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+.phone-bezel {
+  background:
+    linear-gradient(180deg, #1a1d24 0%, #0c0e13 40%, #0c0e13 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 40px 80px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.oled {
+  background: #000;
+}
+
+.scan {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.015) 3px
+  );
+  pointer-events: none;
+}
+
+.glass {
+  background: rgba(14, 16, 22, 0.72);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.term {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.hide-scroll::-webkit-scrollbar { width: 0; height: 0; }
+
